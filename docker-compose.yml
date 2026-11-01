@@ -1,0 +1,10 @@
+services:
+  ml_api:
+    build: .
+    image: ml-prediction-api:local
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: ${MODEL_PATH:-models/my_classifier.h5}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    restart: unless-stopped
